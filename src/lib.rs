@@ -5,7 +5,7 @@ use memchr::memmem;
 use wasm_bindgen::prelude::wasm_bindgen;
 
 ///
-///     字符串计算hash
+/// 字符串计算hash
 ///
 #[wasm_bindgen]
 pub fn hash_64(c_str: &str) -> u64 {
@@ -15,8 +15,8 @@ pub fn hash_64(c_str: &str) -> u64 {
 }
 
 ///
-///     import ./watchgou.js
-///     encode_base64("watch dog");
+/// import ./watchgou.js
+/// encode_base64("watch dog");
 ///
 #[wasm_bindgen]
 pub fn encode_base64(bytes: &[u8]) -> String {
@@ -25,7 +25,7 @@ pub fn encode_base64(bytes: &[u8]) -> String {
 }
 
 ///
-///     检索字符串
+/// 检索字符串
 ///
 #[wasm_bindgen]
 pub fn macthing_str(keyword: &str, content: &str) -> Vec<usize> {
