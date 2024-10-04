@@ -28,15 +28,15 @@ pub fn encode_base64(bytes: &[u8]) -> String {
 ///     检索字符串
 ///
 #[wasm_bindgen]
-pub fn macthing_str(content: &str, keyword: &str) -> i32 {
-    let bytes = content.as_bytes();
-    let finder = memmem::Finder::new(keyword.as_bytes());
-
-    if let Some(index) = finder.find(bytes) {
-        index.try_into().unwrap()
-    } else {
-        -1
+pub fn macthing_str(content: &str, keyword: &str) -> Vec<usize> {
+    let bytes = content.trim().as_bytes();
+    let finder = memmem::Finder::new(keyword.trim().as_bytes());
+    let mut iters = finder.find_iter(bytes);
+    let mut vec: Vec<usize> = Vec::new();
+    while let Some(x) = iters.next() {
+        vec.push(x);
     }
+    vec
 }
 
 #[cfg(test)]
@@ -59,7 +59,7 @@ mod tests {
 
     #[test]
     fn test_macthing_str() {
-        let index = macthing_str("hello world", "lle");
-        println!("index: {}", index);
+        let index = macthing_str("hello world poll", "ll");
+        println!("index: {:#?}", index);
     }
 }
