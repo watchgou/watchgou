@@ -33,4 +33,11 @@ mod tests {
         let c_str = encode_base64(&bytes);
         println!("print : {:}", c_str);
     }
+
+    #[test]
+    fn test_hash_64() {
+        let c_str = "hello wasm";
+        let hash_value = hash_64(&c_str);
+        println!("hash value {}", hash_value);
+    }
 }
