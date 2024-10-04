@@ -22,3 +22,15 @@ pub fn encode_base64(bytes: &[u8]) -> String {
     // direct3D
     STANDARD.encode(bytes)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_encode_base64() {
+        let bytes = [121, 21, 23];
+        let c_str = encode_base64(&bytes);
+        println!("print : {:}", c_str);
+    }
+}

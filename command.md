@@ -1,0 +1,2 @@
+- ⚡️ cargo test -- --nocapture
+- 😋 wasm-pack publish --tag pkg
