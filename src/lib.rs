@@ -14,8 +14,8 @@ pub fn hash_64(c_str: &str) -> u64 {
 }
 
 ///
-///     import ./watchgou
-///     encode_base64();
+///     import ./watchgou.js
+///     encode_base64("watch dog");
 ///
 #[wasm_bindgen]
 pub fn encode_base64(bytes: &[u8]) -> String {
