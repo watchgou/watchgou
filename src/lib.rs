@@ -28,7 +28,7 @@ pub fn encode_base64(bytes: &[u8]) -> String {
 ///     检索字符串
 ///
 #[wasm_bindgen]
-pub fn macthing_str(content: &str, keyword: &str) -> Vec<usize> {
+pub fn macthing_str(keyword: &str, content: &str) -> Vec<usize> {
     let bytes = content.trim().as_bytes();
     let finder = memmem::Finder::new(keyword.trim().as_bytes());
     let mut iters = finder.find_iter(bytes);
