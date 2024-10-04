@@ -20,7 +20,7 @@ pub fn hash_64(c_str: &str) -> u64 {
 ///
 #[wasm_bindgen]
 pub fn encode_base64(bytes: &[u8]) -> String {
-    // direct3D
+    // direct encode
     STANDARD.encode(bytes)
 }
 
