@@ -11,3 +11,4 @@ crate-type = ["cdylib"]
 [dependencies]
 wasm-bindgen = "0.2.93"
 base64 = "0.22.1"
+memchr = { version = "2", default-features = false }

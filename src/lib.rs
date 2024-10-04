@@ -1,6 +1,7 @@
 use std::hash::{DefaultHasher, Hash, Hasher};
 
 use base64::{engine::general_purpose::STANDARD, Engine};
+use memchr::memmem;
 use wasm_bindgen::prelude::wasm_bindgen;
 
 ///
@@ -23,6 +24,21 @@ pub fn encode_base64(bytes: &[u8]) -> String {
     STANDARD.encode(bytes)
 }
 
+///
+///     检索字符串
+///
+#[wasm_bindgen]
+pub fn macthing_str(content: &str, keyword: &str) -> i32 {
+    let bytes = content.as_bytes();
+    let finder = memmem::Finder::new(keyword.as_bytes());
+
+    if let Some(index) = finder.find(bytes) {
+        index.try_into().unwrap()
+    } else {
+        -1
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -39,5 +55,11 @@ mod tests {
         let c_str = "hello wasm";
         let hash_value = hash_64(&c_str);
         println!("hash value: {}", hash_value);
+    }
+
+    #[test]
+    fn test_macthing_str() {
+        let index = macthing_str("hello world", "lle");
+        println!("index: {}", index);
     }
 }
