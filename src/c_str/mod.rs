@@ -59,7 +59,7 @@ mod tests {
 
     #[test]
     fn test_macthing_str() {
-        let index = macthing_str("hello world poll", "ll");
+        let index = macthing_str("ll", "hello world poll");
         println!("index: {:#?}", index);
     }
 }
